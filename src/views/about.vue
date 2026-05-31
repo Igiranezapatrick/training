@@ -30,19 +30,24 @@ const texts = {
 
 <!-- HERO SECTION -->
 <section
-  class="relative h-[70vh] bg-cover bg-center flex items-center justify-center"
+  class="relative h-[75vh] bg-cover bg-center flex items-center justify-center"
   style="background-image: url('/hills.png');"
 >
 
-  <div class="absolute inset-0 bg-black/50"></div>
+  <!-- DARK LAYER -->
+  <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80"></div>
 
-  <div class="relative z-10 text-center text-white px-6">
+  <div class="relative z-10 text-center text-white px-6 max-w-4xl">
 
-    <h1 class="text-6xl font-bold mb-4">
+    <p class="uppercase tracking-[6px] text-green-300 text-sm mb-4">
+      Rwanda Tourism Experience
+    </p>
+
+    <h1 class="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
       {{ texts[currentLanguage].sectionTitle }}
     </h1>
 
-    <p class="text-2xl text-green-300">
+    <p class="text-xl md:text-2xl text-green-200">
       {{ texts[currentLanguage].subtitle }}
     </p>
 
@@ -51,60 +56,74 @@ const texts = {
 </section>
 
 <!-- ABOUT SECTION -->
-<section class="bg-white py-20 px-8">
+<section class="bg-white py-24 px-8">
 
-  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-14">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
 
+    <!-- IMAGE -->
     <div class="md:w-1/2">
-      <img
-        src="/abakobwa.jpg"
-        class="w-full h-[500px] object-cover rounded-3xl shadow-2xl"
-      />
+
+      <div class="rounded-3xl overflow-hidden shadow-2xl">
+        <img
+          src="/abakobwa.jpg"
+          class="w-full h-[520px] object-cover transition duration-700 hover:scale-105"
+        />
+      </div>
+
     </div>
 
+    <!-- TEXT -->
     <div class="md:w-1/2">
 
-      <h2 class="text-5xl font-bold text-green-800 mb-8">
+      <h2 class="text-5xl font-extrabold text-green-900 mb-8 leading-tight">
         {{ texts[currentLanguage].title }}
       </h2>
 
-      <p class="text-gray-700 text-lg leading-9">
-        Tembera Urwanda is a tourism website created to help both
-        international tourists and Rwandans discover the beauty of Rwanda,
-        the Land of a Thousand Hills.
+      <p class="text-gray-700 text-lg leading-10">
+        Tembera Urwanda is a tourism platform designed to showcase the
+        breathtaking beauty of Rwanda, the Land of a Thousand Hills.
+
         <br /><br />
-        From the peaceful beaches of Lake Kivu and the wildlife of
-        Akagera National Park to the vibrant city life of Kigali,
-        Rwanda offers unforgettable experiences filled with adventure,
-        culture, and natural beauty.
+
+        From the misty volcanoes of the north to the calm shores of Lake Kivu,
+        and the vibrant heartbeat of Kigali city, Rwanda offers a unique blend
+        of nature, culture, and adventure.
+
+        <br /><br />
+
+        Every journey tells a story. Every destination feels alive.
       </p>
 
       <button
-        class="mt-8 bg-green-700 hover:bg-green-800 text-white px-8 py-4 rounded-full shadow-lg transition duration-300"
+        class="mt-10 bg-green-700 hover:bg-green-600 text-white px-10 py-4 rounded-full shadow-xl transition duration-300 hover:scale-105"
       >
         {{ texts[currentLanguage].button }}
       </button>
 
     </div>
+
   </div>
+
 </section>
 
 <!-- DESTINATIONS -->
-<section class="bg-slate-50 py-20 px-8">
+<section class="bg-slate-50 py-24 px-8">
 
   <div class="max-w-7xl mx-auto">
 
-    <h1 class="text-5xl font-bold text-center text-green-800 mb-14">
+    <h1 class="text-5xl font-bold text-center text-green-900 mb-16">
       {{ texts[currentLanguage].destinations }}
     </h1>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
 
       <!-- CARD 1 -->
-      <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-blue-200
-                  hover:-translate-y-2 hover:shadow-2xl transition duration-300">
+      <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-blue-100
+                  hover:-translate-y-3 hover:shadow-green-200 transition duration-500">
 
-        <img src="/ingagi.jpg" class="h-64 w-full object-cover hover:scale-105 transition duration-300" />
+        <img src="/ingagi.jpg"
+          class="h-64 w-full object-cover transition duration-700 hover:scale-110"
+        />
 
         <div class="p-6">
 
@@ -121,13 +140,16 @@ const texts = {
           </p>
 
         </div>
+
       </div>
 
       <!-- CARD 2 -->
-      <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-emerald-200
-                  hover:-translate-y-2 hover:shadow-2xl transition duration-300">
+      <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-emerald-100
+                  hover:-translate-y-3 hover:shadow-green-200 transition duration-500">
 
-        <img src="/island.jpg" class="h-64 w-full object-cover hover:scale-105 transition duration-300" />
+        <img src="/island.jpg"
+          class="h-64 w-full object-cover transition duration-700 hover:scale-110"
+        />
 
         <div class="p-6">
 
@@ -140,17 +162,20 @@ const texts = {
           </h2>
 
           <p class="text-gray-600 leading-7">
-            Relax on peaceful beaches and enjoy stunning sunset views.
+            Relax on peaceful beaches and enjoy golden sunset views.
           </p>
 
         </div>
+
       </div>
 
       <!-- CARD 3 -->
-      <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-amber-200
-                  hover:-translate-y-2 hover:shadow-2xl transition duration-300">
+      <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-amber-100
+                  hover:-translate-y-3 hover:shadow-green-200 transition duration-500">
 
-        <img src="/Kigali.jpg" class="h-64 w-full object-cover hover:scale-105 transition duration-300" />
+        <img src="/Kigali.jpg"
+          class="h-64 w-full object-cover transition duration-700 hover:scale-110"
+        />
 
         <div class="p-6">
 
@@ -167,10 +192,13 @@ const texts = {
           </p>
 
         </div>
+
       </div>
 
     </div>
+
   </div>
+
 </section>
 
 </template>

@@ -90,71 +90,62 @@ const galleryImages = [
 
 <template>
 
-<section class="bg-gradient-to-br from-green-50 via-white to-green-100 min-h-screen py-20 px-8">
+<section class="bg-gradient-to-br from-green-50 via-white to-green-100 min-h-screen py-20 px-4 md:px-8">
 
-  <h1 class="text-5xl font-extrabold text-center text-green-800 mb-5">
-
-    <span v-if="currentLanguage === 'en'">
-      Gallery Images
-    </span>
-
-    <span v-if="currentLanguage === 'fr'">
-      Images de la Galerie
-    </span>
-
-    <span v-if="currentLanguage === 'rw'">
-      Amafoto yo muri Gallery
-    </span>
-
+  <!-- TITLE -->
+  <h1 class="text-4xl md:text-5xl font-extrabold text-center text-green-800 mb-6">
+    <span v-if="currentLanguage === 'en'">Gallery Images</span>
+    <span v-else-if="currentLanguage === 'fr'">Images de la Galerie</span>
+    <span v-else>Amafoto yo muri Gallery</span>
   </h1>
 
-  <p class="text-center text-gray-600 max-w-3xl mx-auto mb-16 text-lg leading-8">
-
+  <!-- DESCRIPTION -->
+  <p class="text-center text-gray-600 max-w-3xl mx-auto mb-14 text-base md:text-lg leading-8 px-2">
     <span v-if="currentLanguage === 'en'">
-      Discover the beauty of Rwanda through stunning landscapes, wildlife, culture, and unforgettable adventures.
+      Discover Rwanda through landscapes, wildlife, culture, and adventure.
     </span>
-
-    <span v-if="currentLanguage === 'fr'">
-      Découvrez la beauté du Rwanda à travers des paysages et aventures magnifiques.
+    <span v-else-if="currentLanguage === 'fr'">
+      Découvrez le Rwanda à travers ses paysages et sa culture.
     </span>
-
-    <span v-if="currentLanguage === 'rw'">
-      Reba ubwiza bw’u Rwanda binyuze mu mafoto y’ahantu nyaburanga n’umuco.
+    <span v-else>
+      Menya ubwiza bw’u Rwanda mu mafoto y’ahantu nyaburanga.
     </span>
-
   </p>
 
-  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+  <!-- GRID -->
+  <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
 
     <div
       v-for="item in galleryImages"
       :key="item.title.en"
-      class="bg-white rounded-[30px] overflow-hidden shadow-xl
-             hover:-translate-y-3 hover:shadow-green-300
+      class="bg-white rounded-3xl overflow-hidden shadow-xl
+             hover:-translate-y-3 hover:shadow-green-200
              transition duration-500 group"
     >
 
-      <div class="overflow-hidden">
+      <!-- IMAGE -->
+      <div class="w-full aspect-[4/3] overflow-hidden">
 
         <img
           :src="item.image"
-          class="w-full h-72 object-cover group-hover:scale-110 transition duration-700"
-        >
+          class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+        />
 
       </div>
 
-      <div class="p-6">
+      <!-- CONTENT -->
+      <div class="p-5 md:p-6">
 
-        <h2 class="text-2xl font-bold text-green-800 mb-4">
+        <h2 class="text-xl md:text-2xl font-bold text-green-800 mb-3">
           {{ item.title[currentLanguage] }}
         </h2>
 
-        <p class="text-gray-600 leading-7">
+        <p class="text-gray-600 leading-7 text-sm md:text-base">
           {{ item.desc[currentLanguage] }}
         </p>
 
         <button
-          class="mt-6 bg-green-700 text-white px-5 py-2 rounded-full
+          class="mt-5 bg-green-700 text-white px-5 py-2 rounded-full
                  hover:bg-green-800 transition duration-300 shadow-md"
         >
           Explore More ✨

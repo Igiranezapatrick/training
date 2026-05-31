@@ -4,97 +4,80 @@ import { currentLanguage } from '../store/language'
 const services = [
   {
     image: '/mountain.jpg',
-
     title: {
       en: 'Gorilla Trekking',
       fr: 'Randonnée des Gorilles',
       rw: 'Gutembera kureba Ingagi'
     },
-
     desc: {
       en: 'Experience unforgettable adventures with Rwanda’s famous mountain gorillas in Volcanoes National Park.',
-      fr: 'Vivez une aventure inoubliable avec les célèbres gorilles des montagnes du Rwanda.',
+      fr: 'Vivez une aventure inoubliable avec les gorilles des montagnes du Rwanda.',
       rw: 'Sura ingagi zo mu birunga maze ugire ibihe bitazibagirana.'
     }
   },
-
   {
     image: '/town.jpg',
-
     title: {
       en: 'City Tours',
       fr: 'Visites de la Ville',
       rw: 'Gutembera Umujyi'
     },
-
     desc: {
       en: 'Discover Kigali’s modern lifestyle, clean streets, museums, and vibrant culture.',
-      fr: 'Découvrez Kigali avec ses rues propres, ses musées et sa culture dynamique.',
-      rw: 'Menya Kigali n’imibereho yayo igezweho n’umuco wayo.'
+      fr: 'Découvrez Kigali avec ses rues propres et sa culture dynamique.',
+      rw: 'Menya Kigali igezweho, isukuye kandi ifite umuco mwiza.'
     }
   },
-
   {
     image: '/Lac.jpg',
-
     title: {
       en: 'Lake Kivu Experience',
       fr: 'Expérience du Lac Kivu',
       rw: 'Ubukerarugendo bwa Kivu'
     },
-
     desc: {
-      en: 'Relax on beautiful beaches, enjoy boat rides, and experience peaceful sunsets.',
-      fr: 'Profitez des plages magnifiques et des couchers de soleil paisibles.',
-      rw: 'Iruhukire ku nkengero za Kivu unishimire ubwato n’izuba rirenga.'
+      en: 'Relax on peaceful beaches and enjoy golden sunsets over Lake Kivu.',
+      fr: 'Profitez des plages et des couchers de soleil du Lac Kivu.',
+      rw: 'Iruhukire ku nkengero za Kivu unyure mu bwiza bw’izuba rirenga.'
     }
   },
-
   {
     image: '/amaraba.jpg',
-
     title: {
       en: 'Cultural Experiences',
       fr: 'Expériences Culturelles',
       rw: 'Umuco Nyarwanda'
     },
-
     desc: {
-      en: 'Enjoy traditional dances, local foods, storytelling, and Rwandan hospitality.',
-      fr: 'Découvrez les danses traditionnelles et l’hospitalité rwandaise.',
-      rw: 'Menya imbyino gakondo n’ubwakiranyi bw’Abanyarwanda.'
+      en: 'Enjoy traditional dances, storytelling, local food, and Rwandan heritage.',
+      fr: 'Découvrez les danses et traditions rwandaises.',
+      rw: 'Menya imbyino gakondo n’umuco nyarwanda.'
     }
   },
-
   {
     image: '/thousand.jpg',
-
     title: {
       en: 'Nature Adventures',
       fr: 'Aventures Naturelles',
       rw: 'Ubukerarugendo bwa Kamere'
     },
-
     desc: {
-      en: 'Explore Rwanda’s breathtaking hills, forests, waterfalls, and wildlife.',
-      fr: 'Explorez les collines, forêts et cascades magnifiques du Rwanda.',
-      rw: 'Sura imisozi, amashyamba n’ibyiza nyaburanga by’u Rwanda.'
+      en: 'Explore Rwanda’s green hills, forests, waterfalls, and wildlife.',
+      fr: 'Explorez les collines et forêts du Rwanda.',
+      rw: 'Sura imisozi, amashyamba n’ibyiza nyaburanga.'
     }
   },
-
   {
     image: '/rw.jpg',
-
     title: {
-      en: 'Hotel & Travel Booking',
-      fr: 'Réservation Hôtel & Voyage',
-      rw: 'Gufasha mu Ngendo na Hoteli'
+      en: 'Travel Support',
+      fr: 'Assistance Voyage',
+      rw: 'Ubufasha mu Ngendo'
     },
-
     desc: {
-      en: 'We help visitors find comfortable hotels, transport, and travel guides.',
-      fr: 'Nous aidons les visiteurs à trouver des hôtels et des guides touristiques.',
-      rw: 'Dufasha abakerarugendo kubona hoteli n’abayobora ingendo.'
+      en: 'We help you find hotels, transport, and guided travel experiences.',
+      fr: 'Nous aidons à organiser vos voyages.',
+      rw: 'Dufasha kubona hoteli n’abayobora ingendo.'
     }
   }
 ]
@@ -102,98 +85,81 @@ const services = [
 
 <template>
 
-<!-- HERO SECTION -->
-<section
-  class="relative min-h-screen bg-cover bg-center"
-  style="background-image: url('/wow.png');"
->
+<!-- PAGE WRAPPER -->
+<section class="bg-white min-h-screen">
 
-  <!-- Overlay -->
-  <div class="absolute inset-0 bg-black/60"></div>
+  <!-- HERO -->
+  <div
+    class="relative h-[65vh] bg-cover bg-center flex items-center justify-center"
+    style="background-image: url('/wow.png');"
+  >
+    <div class="absolute inset-0 bg-black/50"></div>
 
-  <!-- Content -->
-  <div class="relative z-10 px-8 py-20">
+    <div class="relative text-center text-white px-6 max-w-4xl">
 
-    <!-- TITLE -->
-    <div class="text-center text-white mb-16">
-
-      <h1 class="text-5xl md:text-6xl font-bold mb-6">
-
-        <span v-if="currentLanguage === 'en'">
-          Our Tourism Services
-        </span>
-
-        <span v-if="currentLanguage === 'fr'">
-          Nos Services Touristiques
-        </span>
-
-        <span v-if="currentLanguage === 'rw'">
-          Serivisi z'Ubukerarugendo
-        </span>
-
+      <h1 class="text-4xl md:text-6xl font-bold mb-6">
+        {{ currentLanguage === 'en'
+          ? 'Our Tourism Services'
+          : currentLanguage === 'fr'
+          ? 'Nos Services Touristiques'
+          : 'Serivisi z\'Ubukerarugendo'
+        }}
       </h1>
 
-      <p class="text-xl text-green-300 max-w-3xl mx-auto leading-8">
-
-        <span v-if="currentLanguage === 'en'">
-          Explore Rwanda through unforgettable adventures, culture, nature, and world-class hospitality.
-        </span>
-
-        <span v-if="currentLanguage === 'fr'">
-          Explorez le Rwanda à travers des aventures, la culture et une hospitalité exceptionnelle.
-        </span>
-
-        <span v-if="currentLanguage === 'rw'">
-          Menya ubwiza bw'u Rwanda binyuze mu bukerarugendo, umuco na serivisi nziza.
-        </span>
-
+      <p class="text-green-200 text-base md:text-lg leading-8">
+        {{ currentLanguage === 'en'
+          ? 'Discover Rwanda through curated travel, culture, nature, and unforgettable experiences.'
+          : currentLanguage === 'fr'
+          ? 'Découvrez le Rwanda à travers des expériences uniques.'
+          : 'Menya ubwiza bw’u Rwanda mu bukerarugendo.'
+        }}
       </p>
 
     </div>
+  </div>
 
-    <!-- SERVICE CARDS -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
+  <!-- CARDS (ABOUT STYLE) -->
+  <div class="max-w-7xl mx-auto px-6 py-20">
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
       <div
         v-for="service in services"
         :key="service.title.en"
-        class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl overflow-hidden shadow-2xl hover:scale-105 transition duration-300"
+        class="bg-white rounded-3xl shadow-md overflow-hidden
+               border border-slate-100
+               transition duration-300 hover:-translate-y-2 hover:shadow-xl"
       >
 
         <!-- IMAGE -->
-        <img
-          :src="service.image"
-          class="w-full h-60 object-cover"
-        />
+        <div class="h-64 w-full overflow-hidden">
+          <img
+            :src="service.image"
+            class="w-full h-full object-cover transition duration-500 hover:scale-105"
+          />
+        </div>
 
         <!-- CONTENT -->
-        <div class="p-6 text-white">
+        <div class="p-6">
 
-          <h2 class="text-2xl font-bold text-green-300 mb-4">
+          <h2 class="text-2xl font-bold text-green-800 mb-4">
             {{ service.title[currentLanguage] }}
           </h2>
 
-          <p class="leading-7 text-gray-200">
+          <p class="text-gray-600 leading-7 text-sm md:text-base">
             {{ service.desc[currentLanguage] }}
           </p>
 
           <!-- BUTTON -->
           <button
-            class="mt-6 bg-green-700 hover:bg-green-800 px-6 py-3 rounded-full transition duration-300"
+            class="mt-6 text-green-700 font-semibold hover:text-green-900 transition"
           >
-
-            <span v-if="currentLanguage === 'en'">
-              Learn More
-            </span>
-
-            <span v-if="currentLanguage === 'fr'">
-              En savoir plus
-            </span>
-
-            <span v-if="currentLanguage === 'rw'">
-              Menya byinshi
-            </span>
-
+            {{ currentLanguage === 'en'
+              ? 'Learn more →'
+              : currentLanguage === 'fr'
+              ? 'En savoir plus →'
+              : 'Menya byinshi →'
+            }}
           </button>
 
         </div>
@@ -205,4 +171,5 @@ const services = [
   </div>
 
 </section>
+
 </template>
