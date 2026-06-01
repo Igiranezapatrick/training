@@ -154,19 +154,19 @@ import { RouterLink } from 'vue-router'
           <li class="flex items-center gap-3">
             📧
             <span>
-              muhizaamina@gmail.com
+              patrickigiraneza0@gmail.com
             </span>
           </li>
 
           <li class="flex items-center gap-3">
-            📞
+            
             <span>
-              +250 767 453 412
+              +250 793081660
             </span>
           </li>
 
           <li class="flex items-center gap-3">
-            📍
+            
             <span>
               Kagugu, Kigali, Rwanda
             </span>
@@ -185,12 +185,7 @@ import { RouterLink } from 'vue-router'
 
     <div class="max-w-7xl mx-auto px-8 py-6">
 
-      <p class="text-center text-sm text-green-300 tracking-wide">
-
-        © 2025 Tembera URWANDA.
-        Crafted with pride for Rwanda tourism 🌍
-
-      </p>
+      <p class="text-center text-sm text-green-300 tracking-wide">Created By Igiraneza patrick</p>
 
     </div>
 
