@@ -1,5 +1,8 @@
 <script setup>
+import { ref } from 'vue'
 import { currentLanguage } from '../store/language'
+
+const activeCard = ref(null)
 
 const services = [
   {
@@ -13,8 +16,14 @@ const services = [
       en: 'Experience unforgettable adventures with Rwanda’s famous mountain gorillas in Volcanoes National Park.',
       fr: 'Vivez une aventure inoubliable avec les gorilles des montagnes du Rwanda.',
       rw: 'Sura ingagi zo mu birunga maze ugire ibihe bitazibagirana.'
+    },
+    more: {
+      en: 'Gorilla trekking helps protect endangered mountain gorillas while supporting local communities and eco-tourism in Rwanda.',
+      fr: 'Cette activité protège les gorilles et soutient le tourisme écologique.',
+      rw: 'Iki gikorwa gifasha kurengera ingagi no guteza imbere ubukerarugendo.'
     }
   },
+
   {
     image: '/town.jpg',
     title: {
@@ -26,8 +35,14 @@ const services = [
       en: 'Discover Kigali’s modern lifestyle, clean streets, museums, and vibrant culture.',
       fr: 'Découvrez Kigali avec ses rues propres et sa culture dynamique.',
       rw: 'Menya Kigali igezweho, isukuye kandi ifite umuco mwiza.'
+    },
+    more: {
+      en: 'City tours help visitors understand Rwanda’s history, innovation, safety, and modern urban development.',
+      fr: 'Les visites permettent de découvrir l’histoire et le développement du Rwanda.',
+      rw: 'Bituma abantu bamenya amateka n’iterambere rya Kigali.'
     }
   },
+
   {
     image: '/Lac.jpg',
     title: {
@@ -39,8 +54,14 @@ const services = [
       en: 'Relax on peaceful beaches and enjoy golden sunsets over Lake Kivu.',
       fr: 'Profitez des plages et des couchers de soleil du Lac Kivu.',
       rw: 'Iruhukire ku nkengero za Kivu unyure mu bwiza bw’izuba rirenga.'
+    },
+    more: {
+      en: 'Lake Kivu offers relaxation, water activities, fresh air, and beautiful scenery for tourists and families.',
+      fr: 'Le Lac Kivu offre détente et paysages magnifiques.',
+      rw: 'Ikiyaga cya Kivu gitanga amahumbezi n’ubwiza nyaburanga.'
     }
   },
+
   {
     image: '/amaraba.jpg',
     title: {
@@ -52,8 +73,14 @@ const services = [
       en: 'Enjoy traditional dances, storytelling, local food, and Rwandan heritage.',
       fr: 'Découvrez les danses et traditions rwandaises.',
       rw: 'Menya imbyino gakondo n’umuco nyarwanda.'
+    },
+    more: {
+      en: 'Cultural experiences preserve Rwanda’s traditions and connect visitors to local communities.',
+      fr: 'Ces expériences préservent les traditions rwandaises.',
+      rw: 'Bifasha kubungabunga umuco nyarwanda.'
     }
   },
+
   {
     image: '/thousand.jpg',
     title: {
@@ -65,8 +92,14 @@ const services = [
       en: 'Explore Rwanda’s green hills, forests, waterfalls, and wildlife.',
       fr: 'Explorez les collines et forêts du Rwanda.',
       rw: 'Sura imisozi, amashyamba n’ibyiza nyaburanga.'
+    },
+    more: {
+      en: 'Nature adventures encourage environmental protection and showcase Rwanda’s biodiversity.',
+      fr: 'Ces aventures valorisent la biodiversité du Rwanda.',
+      rw: 'Bituma abantu barushaho kurengera ibidukikije.'
     }
   },
+
   {
     image: '/rw.jpg',
     title: {
@@ -78,6 +111,11 @@ const services = [
       en: 'We help you find hotels, transport, and guided travel experiences.',
       fr: 'Nous aidons à organiser vos voyages.',
       rw: 'Dufasha kubona hoteli n’abayobora ingendo.'
+    },
+    more: {
+      en: 'Travel support makes journeys easier, safer, and more enjoyable for tourists visiting Rwanda.',
+      fr: 'L’assistance rend les voyages plus simples et agréables.',
+      rw: 'Bituma urugendo rworoha kandi rurushaho kunezeza.'
     }
   }
 ]
@@ -118,24 +156,24 @@ const services = [
     </div>
   </div>
 
-  <!-- CARDS (ABOUT STYLE) -->
+  <!-- SERVICES -->
   <div class="max-w-7xl mx-auto px-6 py-20">
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
       <div
-        v-for="service in services"
+        v-for="(service, index) in services"
         :key="service.title.en"
         class="bg-white rounded-3xl shadow-md overflow-hidden
                border border-slate-100
-               transition duration-300 hover:-translate-y-2 hover:shadow-xl"
+               transition duration-300 hover:-translate-y-2 hover:shadow-2xl"
       >
 
         <!-- IMAGE -->
         <div class="h-64 w-full overflow-hidden">
           <img
             :src="service.image"
-            class="w-full h-full object-cover transition duration-500 hover:scale-105"
+            class="w-full h-full object-cover transition duration-500 hover:scale-110"
           />
         </div>
 
@@ -150,17 +188,53 @@ const services = [
             {{ service.desc[currentLanguage] }}
           </p>
 
-          <!-- BUTTON -->
+          <!-- INTERACTIVE BUTTON -->
           <button
-            class="mt-6 text-green-700 font-semibold hover:text-green-900 transition"
+            @click="activeCard === index ? activeCard = null : activeCard = index"
+            class="group mt-6 flex items-center gap-2 text-green-700
+                   font-semibold hover:text-green-900 transition"
           >
-            {{ currentLanguage === 'en'
-              ? 'Learn more →'
-              : currentLanguage === 'fr'
-              ? 'En savoir plus →'
-              : 'Menya byinshi →'
+
+            {{
+              currentLanguage === 'en'
+                ? 'Learn more'
+                : currentLanguage === 'fr'
+                ? 'En savoir plus'
+                : 'Menya byinshi'
             }}
+
+            <span
+              class="transition duration-300"
+              :class="activeCard === index ? 'rotate-90' : ''"
+            >
+              →
+            </span>
+
           </button>
+
+          <!-- EXPANDING DESCRIPTION -->
+          <transition
+            enter-active-class="transition duration-500 ease-out"
+            enter-from-class="opacity-0 max-h-0"
+            enter-to-class="opacity-100 max-h-40"
+            leave-active-class="transition duration-300 ease-in"
+            leave-from-class="opacity-100 max-h-40"
+            leave-to-class="opacity-0 max-h-0"
+          >
+
+            <div
+              v-if="activeCard === index"
+              class="mt-5 bg-green-50 border border-green-100
+                     rounded-2xl p-4 overflow-hidden"
+            >
+
+              <p class="text-gray-700 leading-7 text-sm">
+                {{ service.more[currentLanguage] }}
+              </p>
+
+            </div>
+
+          </transition>
 
         </div>
 

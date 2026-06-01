@@ -94,11 +94,35 @@ const texts = {
         Every journey tells a story. Every destination feels alive.
       </p>
 
-      <button
-        class="mt-10 bg-green-700 hover:bg-green-600 text-white px-10 py-4 rounded-full shadow-xl transition duration-300 hover:scale-105"
+      <!-- INTERACTIVE BUTTON -->
+      <a
+        href="#destinations"
+        class="group mt-10 inline-flex items-center gap-3 relative overflow-hidden
+               bg-green-700 hover:bg-green-600 text-white px-10 py-4
+               rounded-full shadow-2xl transition duration-500
+               hover:scale-110 font-semibold text-lg"
       >
-        {{ texts[currentLanguage].button }}
-      </button>
+
+        <!-- Glow -->
+        <span
+          class="absolute inset-0 bg-white/10 opacity-0
+                 group-hover:opacity-100 transition duration-500 rounded-full"
+        ></span>
+
+        <!-- Text -->
+        <span class="relative z-10">
+          {{ texts[currentLanguage].button }}
+        </span>
+
+        <!-- Arrow -->
+        <span
+          class="relative z-10 transition-transform duration-300
+                 group-hover:translate-x-2"
+        >
+          →
+        </span>
+
+      </a>
 
     </div>
 
@@ -107,7 +131,7 @@ const texts = {
 </section>
 
 <!-- DESTINATIONS -->
-<section class="bg-slate-50 py-24 px-8">
+<section id="destinations" class="bg-slate-50 py-24 px-8">
 
   <div class="max-w-7xl mx-auto">
 
@@ -121,7 +145,8 @@ const texts = {
       <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-blue-100
                   hover:-translate-y-3 hover:shadow-green-200 transition duration-500">
 
-        <img src="/ingagi.jpg"
+        <img
+          src="/ingagi.jpg"
           class="h-64 w-full object-cover transition duration-700 hover:scale-110"
         />
 
@@ -147,7 +172,8 @@ const texts = {
       <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-emerald-100
                   hover:-translate-y-3 hover:shadow-green-200 transition duration-500">
 
-        <img src="/island.jpg"
+        <img
+          src="/island.jpg"
           class="h-64 w-full object-cover transition duration-700 hover:scale-110"
         />
 
@@ -173,7 +199,8 @@ const texts = {
       <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-amber-100
                   hover:-translate-y-3 hover:shadow-green-200 transition duration-500">
 
-        <img src="/Kigali.jpg"
+        <img
+          src="/Kigali.jpg"
           class="h-64 w-full object-cover transition duration-700 hover:scale-110"
         />
 
